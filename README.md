@@ -1,4 +1,23 @@
-#Pane endale tööle märkmete muutmise osa.
-Vaata, mis ma juurde lisasin eelmisele tunninäitele [SIIN](https://github.com/veebiprogrammeerimine-2016s/9.tund-III-ruhm/commit/cb6fc2bb08bc5bb46f088c784530151e9f55e959) või fork'i terve repositoorium.
+# 3. kodutoo (III rühm)
 
-Vaata kood üle ja veendu, et saad aru kuidas kood töötab.
+## Kirjeldus
+1. Lähtu ülesannete puhul alati oma ideest ning ole loominguline
+  * AB'i kirjeid saab muuta ja kustutada (arhiveerida)
+  * lehel töötab otsing ja tulemusi saab sorteerida 
+  * abi saad tunnitöödest 
+
+**OLULINE! ÄRA POSTITA GITHUBI GREENY MYSQL PAROOLE.** Selleks toimi järgmiselt:
+  * loo eraldi fail `config.php`. Lisa sinna kasutaja ja parool ning tõsta see enda koduse töö kaustast ühe taseme võrra väljapoole
+```PHP
+  $serverHost = "localhost";
+  $serverUsername = "username";
+  $serverPassword = "password";
+```
+  * Andmebaasi nimi lisa aga kindlasti enda faili ja `require_once` käsuga küsi parool ja kasutajanimi `config.php` failist, siis saan kodust tööd lihtsamini kontrollida
+```PHP
+  // ühenduse loomiseks kasuta
+  require_once("../config.php");
+  $database = "database";
+  $mysqli = new mysqli($servername, $username, $password, $database);
+```
+

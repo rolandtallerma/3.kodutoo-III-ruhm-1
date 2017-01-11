@@ -37,6 +37,30 @@
 		
 	}
 	
+	
+	
+	$loginEmailError = "";
+	$loginEmail = "";
+	if (isset ($_POST["loginEmail"])) {
+		if (empty ($_POST["loginEmail"])) {
+			$loginEmailError = "See väli on kohustuslik";
+		} else {
+			$loginEmail = $_POST["loginEmail"];
+		}
+		
+	}
+	
+	$loginPasswordError = "";
+	$loginPassword = "";
+	if (isset ($_POST["loginPassword"])) {
+		if (empty ($_POST["loginPassword"])) {
+			$loginPasswordError = "See väli on kohustuslik";
+		} else {
+			$loginPassword = $_POST["loginPassword"];
+		}
+		
+	}
+	
 	$signupPasswordError = "";
 	
 	//kas on üldse olemas
@@ -116,37 +140,32 @@
 	}
 	
 ?>
-
-<?php require("../header.php")?>
-
+<?php require("../header.php"); ?>
 <div class="container">
+	<div class="row">
+		<div class="col-sm-4 col-md-3">
 
-	<div class = "row"
-		<div class="col-sm-6">
-		<div class="col-sm-6">
-	
-		<h1>Logi sisse</h1>
-		<p style="color:red;"><?php echo $notice; ?></p>
-		<form method="POST">
+			<h1>Logi sisse</h1>
+			<p style="color:red;"><?php echo $notice; ?></p>
+			<form method="POST">
+				<div class="form-group">
+				<label>E-post</label><br>
+				<input name="loginEmail" type="email" value="<?=$loginEmail;?>" > <?php echo $loginEmailError; ?>
+				</div>
+				<br><br>
+				
+				<label>Parool</label><br>
+				<input name="loginPassword" type="password"> <?php echo $loginPasswordError; ?>
+							
+				<br><br>
+				
+				<input class="btn btn-success btn-sm hidden-xs" type="submit" value="Logi Sisse1">
+				<input class="btn btn-success btn-sm btn-block visible-xs-block" type="submit" value="Logi Sisse2">
 			
-			<label>E-post</label><br>
-			<input name="loginEmail" type="email">
-			
-			<br><br>
-			
-			<label>Parool</label><br>
-			<input name="loginPassword" type="password">
-						
-			<br><br>
-			
-			<input type="submit">
-			
-		
-		</form>
+			</form>
 		</div>
-	</div>
-	<div class ="col-sm-6">
 		
+		<div class="col-sm-4 col-md-3 col-sm-offset-4 col-md-offset-3">
 		<h1>Loo kasutaja</h1>
 		
 		<form method="POST">
@@ -181,9 +200,7 @@
 			<input type="submit" value="Loo kasutaja">
 		
 		</form>
+		</div>
+	</div>
 
-	</body>
-</div>
-
-
-<?php require("../footer.php");
+<?php require("../footer.php"); ?>

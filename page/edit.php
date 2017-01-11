@@ -20,7 +20,7 @@
 	//kas kasutaja uuendab andmeid
 	if(isset($_POST["update"])){
 		
-		$Note->updateNote($Helper->cleanInput($_POST["id"]), $Helper->cleanInput($_POST["note"]), $Helper->cleanInput($_POST["color"]));
+		$Note->updateNote($Helper->cleanInput($_POST["id"]), $Helper->cleanInput($_POST["kaamera"]), $Helper->cleanInput($_POST["hind"]), $Helper->cleanInput($_POST["seisukord"]));
 		
 		header("Location: edit.php?id=".$_POST["id"]."&success=true");
         exit();	
@@ -33,16 +33,19 @@
 
 	
 ?>
+<?php require("../header.php"); ?>
 <br><br>
 <a href="data.php"> tagasi </a>
 
 <h2>Muuda kirjet</h2>
   <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" >
 	<input type="hidden" name="id" value="<?=$_GET["id"];?>" > 
-  	<label for="note" >Märkus</label><br>
-	<textarea  id="note" name="note"><?php echo $c->note;?></textarea><br>
-  	<label for="color" >värv</label><br>
-	<input id="color" name="color" type="color" value="<?=$c->color;?>"><br><br>
+  	<label for="kaamera" >Kaamera</label><br>
+	<textarea  id="kaamera" name="kaamera"><?php echo $c->kaamera;?></textarea><br>
+	<label for="hind" >Hind</label><br>
+	<textarea  id="hind" name="hind"><?php echo $c->hind;?></textarea><br>
+	<label for="seisukord" >Seisukord</label><br>
+	<textarea  id="seisukord" name="seisukord"><?php echo $c->seisukord;?></textarea><br>
   	
 	<input type="submit" name="update" value="Salvesta">
   </form>
@@ -50,6 +53,8 @@
 <br>
 <br>
 <a href="?id=<?=$_GET["id"];?>&delete=true">kustuta</a>
+  
+<?php require("../footer.php"); ?> 
   
   
   
